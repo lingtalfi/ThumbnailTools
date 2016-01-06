@@ -87,6 +87,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.0.1 -- 2016-01-06
+
+    - fix bug: the destination directory is now created before hand
+    
 - 1.0.0 -- 2016-01-06
 
     - initial commit

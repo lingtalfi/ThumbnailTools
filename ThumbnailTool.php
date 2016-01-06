@@ -36,8 +36,8 @@ class ThumbnailTool
      * maxWidth and maxHeight must be strictly positive integers.
      *
      *
-     * 
-     * 
+     *
+     *
      *
      *
      * Notes:
@@ -50,9 +50,9 @@ class ThumbnailTool
      * - imac 10.11.1
      * - php: 5.6.12
      * - gdVersion: bundled (2.1.0 compatible)
-     * 
-     * 
-     * 
+     *
+     *
+     *
      *
      *
      * @param $src
@@ -73,6 +73,7 @@ class ThumbnailTool
         $height = $srcHeight;
         $maxWidth = (int)$maxWidth;
         $maxHeight = (int)$maxHeight;
+        $res = false;
 
         if (0 !== $maxWidth && 0 === $maxHeight) {
             $width = $maxWidth;
@@ -137,25 +138,31 @@ class ThumbnailTool
         // assuming the file has an explicit extension (otherwise accept an array as argument...)
         $ext = strtolower(FileSystemTool::getFileExtension($dst));
 
-        switch ($ext) {
-            case 'jpeg':
-            case 'jpg':
-                $res = imagejpeg($imageFinal, $dst);
-                break;
-            case 'png':
-                $res = imagepng($imageFinal, $dst);
-                break;
-            case 'gif':
-                $res = imagegif($imageFinal, $dst);
-                break;
-            default:
-                throw new \RuntimeException("Unsupported destination image extension: $ext");
-                break;
+        if (true === FileSystemTool::mkdir(dirname($dst), 0777, true)) {
+
+
+            switch ($ext) {
+                case 'jpeg':
+                case 'jpg':
+                    $res = imagejpeg($imageFinal, $dst);
+                    break;
+                case 'png':
+                    $res = imagepng($imageFinal, $dst);
+                    break;
+                case 'gif':
+                    $res = imagegif($imageFinal, $dst);
+                    break;
+                default:
+                    throw new \RuntimeException("Unsupported destination image extension: $ext");
+                    break;
+            }
+            imagedestroy($imageFinal);
+            imagedestroy($image);
         }
-
-
-        imagedestroy($imageFinal);
-        imagedestroy($image);
+        else {
+            $dst_parent = dirname($dst);
+            trigger_error("Couldn't create the target directory $dst_parent", E_USER_WARNING);
+        }
         return $res;
     }
 
