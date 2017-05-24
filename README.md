@@ -87,6 +87,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.1.0 -- 2017-05-24
+
+    - add KoolThumbnailTool class
+    
 - 1.0.2 -- 2017-05-24
 
     - fix bug: when both maxWidth and maxHeight are specified, the image can scale up

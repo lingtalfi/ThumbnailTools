@@ -98,12 +98,15 @@ class ThumbnailTool
         $imageFinal = imagecreatetruecolor($width, $height);
 
 
-        switch ($srcType) {
-            case IMAGETYPE_JPEG:
-            case IMAGETYPE_JPEG2000:
+        $type2Handlers = static::getType2Handlers();
+        $handler = (array_key_exists($srcType, $type2Handlers)) ? $type2Handlers[$srcType] : "none";
+
+
+        switch ($handler) {
+            case "jpg":
                 $image = imagecreatefromjpeg($src);
                 break;
-            case IMAGETYPE_PNG:
+            case "gif":
 
                 $image = imagecreatefrompng($src);
                 imagealphablending($imageFinal, false);
@@ -112,7 +115,7 @@ class ThumbnailTool
                 imagefilledrectangle($imageFinal, 0, 0, $width, $height, $transparent);
 
                 break;
-            case IMAGETYPE_GIF:
+            case "png":
                 $image = imagecreatefromgif($src);
 
                 $transparent_index = imagecolortransparent($image);
@@ -124,7 +127,7 @@ class ThumbnailTool
                 }
                 break;
             default:
-                throw new \RuntimeException("Unsupported image format: $srcType");
+                throw new \RuntimeException("Unsupported image format: $srcType, src: $src");
                 break;
         }
 
@@ -162,5 +165,15 @@ class ThumbnailTool
         return $res;
     }
 
+
+    protected static function getType2Handlers()
+    {
+        return [
+            IMAGETYPE_JPEG => 'jpg',
+            IMAGETYPE_JPEG2000 => 'jpg',
+            IMAGETYPE_GIF => 'gif',
+            IMAGETYPE_PNG => 'png',
+        ];
+    }
 
 }
