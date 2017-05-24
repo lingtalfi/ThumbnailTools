@@ -19,6 +19,7 @@ class ThumbnailTool
      * The destination directory is created if necessary.
      * The function ensures that an image is created (handy to use with uploaded files for security).
      *
+     *
      * If maxWidth is null and maxHeight is null, the created image will have the same dimensions
      * as the original image.
      *
@@ -32,6 +33,7 @@ class ThumbnailTool
      * and in accordance with the image original ratio.
      *
      *
+     * The image is scaled up if necessary.
      *
      * maxWidth and maxHeight must be strictly positive integers.
      *
@@ -78,22 +80,17 @@ class ThumbnailTool
         if (0 !== $maxWidth && 0 === $maxHeight) {
             $width = $maxWidth;
             $height = $width / $ratio;
-        }
-        elseif (0 !== $maxHeight && 0 === $maxWidth) {
+        } elseif (0 !== $maxHeight && 0 === $maxWidth) {
             $height = $maxHeight;
             $width = $height * $ratio;
-        }
-        elseif (0 !== $maxWidth && 0 !== $maxHeight) {
-            // taller
-            if ($height > $maxHeight) {
-                $width = ($maxHeight / $height) * $width;
-                $height = $maxHeight;
-            }
+        } elseif (0 !== $maxWidth && 0 !== $maxHeight) {
+            $width = $maxWidth;
+            $height = $maxHeight;
 
-            // wider
-            if ($width > $maxWidth) {
-                $height = ($maxWidth / $width) * $height;
-                $width = $maxWidth;
+            if ($ratio >= 1) {
+                $height = $width / $ratio;
+            } else {
+                $width = $height * $ratio;
             }
         }
 
@@ -158,8 +155,7 @@ class ThumbnailTool
             }
             imagedestroy($imageFinal);
             imagedestroy($image);
-        }
-        else {
+        } else {
             $dst_parent = dirname($dst);
             trigger_error("Couldn't create the target directory $dst_parent", E_USER_WARNING);
         }

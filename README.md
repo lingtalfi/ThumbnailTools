@@ -87,6 +87,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.0.2 -- 2017-05-24
+
+    - fix bug: when both maxWidth and maxHeight are specified, the image can scale up
+    
 - 1.0.1 -- 2016-01-06
 
     - fix bug: the destination directory is now created before hand
