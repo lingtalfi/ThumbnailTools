@@ -87,6 +87,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.2.0 -- 2017-07-13
+
+    - now returns false when "Division by zero" problem (erroneous image) occurs
+    
 - 1.1.0 -- 2017-05-24
 
     - add KoolThumbnailTool class
