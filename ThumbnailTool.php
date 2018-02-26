@@ -139,6 +139,10 @@ class ThumbnailTool
 
             // assuming the file has an explicit extension (otherwise accept an array as argument...)
             $ext = strtolower(FileSystemTool::getFileExtension($dst));
+            if (empty($ext)) {
+                $ext = strtolower(FileSystemTool::getFileExtension($src));
+            }
+
 
             if (true === FileSystemTool::mkdir(dirname($dst), 0777, true)) {
 

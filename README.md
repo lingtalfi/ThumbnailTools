@@ -87,6 +87,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.2.2 -- 2018-02-26
+
+    - enhance ThumbNailTool::biggest now defaults to src extension if dst extension is not explicit
+    
 - 1.2.1 -- 2018-02-26
 
     - fix ThumbNailTool::biggest method inverting png and gif handling
