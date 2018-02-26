@@ -110,7 +110,7 @@ class ThumbnailTool
                     break;
                 case "gif":
 
-                    $image = imagecreatefrompng($src);
+                    $image = imagecreatefromgif($src);
                     imagealphablending($imageFinal, false);
                     imagesavealpha($imageFinal, true);
                     $transparent = imagecolorallocatealpha($imageFinal, 255, 255, 255, 127);
@@ -118,7 +118,7 @@ class ThumbnailTool
 
                     break;
                 case "png":
-                    $image = imagecreatefromgif($src);
+                    $image = imagecreatefrompng($src);
 
                     $transparent_index = imagecolortransparent($image);
                     if ($transparent_index >= 0) {
