@@ -1,6 +1,6 @@
 <?php
 
-namespace ThumbnailTools;
+namespace Ling\ThumbnailTools;
 
 
 class KoolThumbnailTool extends ThumbnailTool

@@ -1,11 +1,11 @@
 <?php
 
-namespace ThumbnailTools;
+namespace Ling\ThumbnailTools;
 
 /*
  * LingTalfi 2016-01-06
  */
-use Bat\FileSystemTool;
+use Ling\Bat\FileSystemTool;
 
 class ThumbnailTool
 {

@@ -18,7 +18,7 @@ Install
 ==========
 Using the [uni](https://github.com/lingtalfi/universe-naive-importer) command.
 ```bash
-uni import ThumbnailTools
+uni import Ling/ThumbnailTools
 ```
 
 
@@ -67,7 +67,7 @@ maxWidth and maxHeight must be strictly positive integers.
 ```php
 <?php
 
-use ThumbnailTools\ThumbnailTool;
+use Ling\ThumbnailTools\ThumbnailTool;
 
 require_once "bigbang.php";
 
