@@ -95,6 +95,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.3.0 -- 2019-10-17
+
+    - updated ThumbnailTool::biggest, now accepts an options argument
+    
 - 1.2.2 -- 2018-02-26
 
     - enhance ThumbNailTool::biggest now defaults to src extension if dst extension is not explicit
