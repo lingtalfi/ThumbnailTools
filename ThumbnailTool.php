@@ -68,6 +68,7 @@ class ThumbnailTool
      * @param $dst
      * @param int $maxWidth
      * @param int $maxHeight
+     * @param array $options
      * @return bool
      */
     public static function biggest($src, $dst, $maxWidth = null, $maxHeight = null, array $options = [])

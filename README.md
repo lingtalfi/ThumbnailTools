@@ -95,6 +95,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.3.1 -- 2019-10-17
+
+    - add missing comment docBlock in ThumbnailTool::biggest
+    
 - 1.3.0 -- 2019-10-17
 
     - updated ThumbnailTool::biggest, now accepts an options argument
